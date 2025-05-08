@@ -1,0 +1,53 @@
+Microsoft (R) Macro Assembler Version 5.00                  11/5/24 18:40:18
+                                                             Page     1-1
+
+
+       1 0000				datahere segment 
+       2 0000  1100			A1 dw 1100h 
+       3 0002  1200			Sum dw 1200h 
+       4 0004				datahere ends 
+       5 0000				codehere segment 
+       6				assume cs: codehere, ds: datahere 
+       7 1000				        ORG 1000h 
+       8 1000  B9 0005			        MOV CX, 05h 
+       9 1003  B8 0000			        MOV AX, 0 
+      10 1006  8B F0			        MOV SI,AX 
+      11 1008  03 84 0000 R		    L1: ADD AX, [A1+SI] 
+      12 100C  83 C6 02			        ADD SI, 2 
+      13 100F  E2 F7			        LOOP L1 
+      14 1011  A3 0002 R		        MOV [Sum], AX 
+      15 1014  F4			    HLT 
+      16 1015				codehere ends 
+      17				end 
+Microsoft (R) Macro Assembler Version 5.00                  11/5/24 18:40:18
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODEHERE . . . . . . . . . . . .  	1015	PARA	NONE	
+DATAHERE . . . . . . . . . . . .  	0004	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+A1 . . . . . . . . . . . . . . .  	L WORD	0000	DATAHERE
+
+L1 . . . . . . . . . . . . . . .  	L NEAR	1008	CODEHERE
+
+SUM  . . . . . . . . . . . . . .  	L WORD	0002	DATAHERE
+
+@FILENAME  . . . . . . . . . . .  	TEXT  exp5		
+
+
+     17 Source  Lines
+     17 Total   Lines
+      7 Symbols
+
+  50558 + 465986 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

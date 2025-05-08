@@ -1,0 +1,52 @@
+Microsoft (R) Macro Assembler Version 5.00                  11/5/24 18:13:16
+                                                             Page     1-1
+
+
+       1 0000				datahere segment 
+       2 0000  1100			A1 dw 1100h 
+       3 0002				datahere ends 
+       4 0000				codehere segment 
+       5				assume cs:codehere , ds: datahere 
+       6 1000				        ORG 1000h 
+       7 1000  BE 1200			        MOV SI,1200h 
+       8 1003  BA FFFF			        MOV DX,0FFFFh 
+       9 1006  B4 FF			        MOV AH,0FFh 
+      10 1008  42			    L1: INC DX 
+      11 1009  8A 04			        MOV AL,[SI] 
+      12 100B  46			        INC SI 
+      13 100C  3A E0			        CMP AH,AL 
+      14 100E  75 F8			        JNZ L1 
+      15 1010  89 16 0000 R		        MOV [A1],DX 
+      16 1014  F4			        HLT 
+      17 1015				codehere ends 
+      18				end 
+Microsoft (R) Macro Assembler Version 5.00                  11/5/24 18:13:16
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODEHERE . . . . . . . . . . . .  	1015	PARA	NONE	
+DATAHERE . . . . . . . . . . . .  	0002	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+A1 . . . . . . . . . . . . . . .  	L WORD	0000	DATAHERE
+
+L1 . . . . . . . . . . . . . . .  	L NEAR	1008	CODEHERE
+
+@FILENAME  . . . . . . . . . . .  	TEXT  exp4		
+
+
+     18 Source  Lines
+     18 Total   Lines
+      6 Symbols
+
+  50634 + 465910 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

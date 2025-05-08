@@ -1,0 +1,67 @@
+Microsoft (R) Macro Assembler Version 5.00                  11/5/24 19:37:33
+                                                             Page     1-1
+
+
+       1 0000				    codehere segment 
+       2				    assume cs: codehere 
+       3 1000				    ORG 1000h  
+       4 1000  B0 36			    MOV AL, 36H  
+       5 1002  E6 16			    OUT 16H, AL  
+       6 1004  B0 08			    MOV AL ,08H  
+       7 1006  E6 10			    OUT 10H , AL  
+       8 1008  32 C0			    XOR AL ,AL  
+       9 100A  E6 10			    OUT 10H ,AL  
+      10 100C  B0 40			    MOV AL ,40H  
+      11 100E  E6 12			    OUT 12H, AL  
+      12 1010  B0 37			    MOV AL, 37H  
+      13 1012  E6 12			    OUT 12H, AL 
+      14 1014  BF 1300			    MOV DI ,1300H  
+      15 1017  8B 0D			    MOV CX,[DI]  
+      16 1019  BE 1500			    MOV SI,1500H  
+      17 101C  BF 1600			    MOV DI,1600H 
+      18 101F  E4 0A			TX: IN AL, 0AH 
+      19 1021  24 04			    AND AL, 04H  
+      20 1023  74 FA			    JZ TX 
+      21 1025  8A 04			    MOV AL, [SI]  
+      22 1027  E6 08			    OUT 08H,AL 
+      23 1029  E4 0A			LI: IN AL, 0AH 
+      24 102B  24 02			    AND AL ,02H  
+      25 102D  74 FA			    JZ LI 
+      26				    JN IN AL, 08H  
+exp11.asm(26): error A2105: Expected: instruction or directive
+      27 102F  88 05			    MOV [DI],AL  
+      28 1031  46			    INC SI 
+      29 1032  47			    INC DI  
+      30 1033  E2 EA			    LOOP TX  
+      31 1035  F4			    HLT 
+      32 1036				    codehere ends 
+      33				    end 
+Microsoft (R) Macro Assembler Version 5.00                  11/5/24 19:37:33
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODEHERE . . . . . . . . . . . .  	1036	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+LI . . . . . . . . . . . . . . .  	L NEAR	1029	CODEHERE
+
+TX . . . . . . . . . . . . . . .  	L NEAR	101F	CODEHERE
+
+@FILENAME  . . . . . . . . . . .  	TEXT  exp11		
+
+
+     33 Source  Lines
+     33 Total   Lines
+      5 Symbols
+
+  50636 + 465908 Bytes symbol space free
+
+      0 Warning Errors
+      1 Severe  Errors

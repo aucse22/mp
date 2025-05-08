@@ -1,0 +1,59 @@
+Microsoft (R) Macro Assembler Version 5.00                  11/5/24 19:23:25
+                                                             Page     1-1
+
+
+       1 0000				datahere segment 
+       2 0000  1100			A1 dw 1100h 
+       3 0002				datahere ends 
+       4 0000				codehere segment 
+       5				assume cs: codehere, ds: datahere 
+       6 1000				        ORG 1000h 
+       7 1000  B9 0007			        MOV CX, 07h 
+       8 1003  8B F9			    L1: MOV DI, CX 
+       9 1005  BB 0000			        MOV BX, 00h 
+      10 1008  8B 87 0000 R		    L2: MOV AX, A1 [BX] 
+      11 100C  3B 87 0002 R		        CMP AX, A1 [BX + 2] 
+      12 1010  73 08			        JNC PROCEED 
+      13 1012  87 87 0002 R		        XCHG AX, A1 [BX + 2] 
+      14 1016  89 87 0000 R		        MOV A1 [BX], AX 
+      15 101A  83 C3 02			    PROCEED: ADD BX, 2 
+      16 101D  E2 E9			        LOOP L2 
+      17 101F  90			        NOP 
+      18 1020  8B CF			        MOV CX, DI 
+      19 1022  E2 DF			        LOOP L1 
+      20 1024  F4			        HLT 
+      21 1025				codehere ends 
+      22				end 
+Microsoft (R) Macro Assembler Version 5.00                  11/5/24 19:23:25
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODEHERE . . . . . . . . . . . .  	1025	PARA	NONE	
+DATAHERE . . . . . . . . . . . .  	0002	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+A1 . . . . . . . . . . . . . . .  	L WORD	0000	DATAHERE
+
+L1 . . . . . . . . . . . . . . .  	L NEAR	1003	CODEHERE
+L2 . . . . . . . . . . . . . . .  	L NEAR	1008	CODEHERE
+
+PROCEED  . . . . . . . . . . . .  	L NEAR	101A	CODEHERE
+
+@FILENAME  . . . . . . . . . . .  	TEXT  exp6		
+
+
+     22 Source  Lines
+     22 Total   Lines
+      8 Symbols
+
+  50482 + 466062 Bytes symbol space free
+
+      0 Warning Errors
+      0 Severe  Errors

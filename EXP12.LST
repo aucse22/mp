@@ -1,0 +1,51 @@
+Microsoft (R) Macro Assembler Version 5.00                  11/5/24 19:14:10
+                                                             Page     1-1
+
+
+       1 0000				codehere segment 
+       2				assume cs: codehere 
+       3 1000				    ORG 1000h   
+       4 1000  B0 00			    MOV AL , 00H  
+       5 1002  E6 02			    OUT 02H , AL  
+       6 1004  B0 00			    MOV AL , 00H  
+       7 1006  E6 02			    OUT 02H , AL  
+       8 1008  B0 90			    MOV AL , 90H  
+       9 100A  E6 02			    OUT 02H , AL  
+      10 100C  B1 05			    MOV CL , 05H  
+      11 100E  BF 1100			    MOV DI , 1100H 
+      12 1011  8A 05			LOOP: MOV AL, [DI] 
+exp12.asm(12): warning A4016: Reserved word used as symbol: LOOP
+      13 1013  E6 00			    OUT 00H , AL 
+      14 1015  47			    INC DI  
+      15 1016  FE C9			    DEC CL  
+      16 1018  75 F7			    JNZ LOOP  
+      17 101A  F4			    HLT 
+      18 101B				codehere ends 
+      19				end     
+Microsoft (R) Macro Assembler Version 5.00                  11/5/24 19:14:10
+                                                             Symbols-1
+
+
+Segments and Groups:
+
+                N a m e         	Length	 Align	Combine Class
+
+CODEHERE . . . . . . . . . . . .  	101B	PARA	NONE	
+
+Symbols:            
+
+                N a m e         	Type	 Value	 Attr
+
+LOOP . . . . . . . . . . . . . .  	L NEAR	1011	CODEHERE
+
+@FILENAME  . . . . . . . . . . .  	TEXT  exp12		
+
+
+     19 Source  Lines
+     19 Total   Lines
+      4 Symbols
+
+  50636 + 465908 Bytes symbol space free
+
+      1 Warning Errors
+      0 Severe  Errors
